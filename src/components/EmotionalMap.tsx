@@ -72,15 +72,6 @@ const EmotionalMap = ({ goToSlide }: EmotionalMapProps) => {
       color: 'blue'
     },
     {
-      id: '4',
-      title: 'Constelação de Complexos',
-      description: 'Mapeamento visual dos complexos pessoais. Posicione temas em relação ao seu Self.',
-      path: '/constelacao-complexos',
-      difficulty: 'Avançado',
-      duration: '20-25 min',
-      color: 'orange'
-    },
-    {
       id: '5',
       title: 'Diário de Sonhos',
       description: 'Registro e interpretação simbólica de sonhos. Muito específico de Jung, prático para terapia.',
