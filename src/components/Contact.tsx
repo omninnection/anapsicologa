@@ -86,7 +86,7 @@ const Contact = () => {
               </h3>
               
               {/* Grid 2x2 + Consultório */}
-              <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="flex items-start">
                   <Phone className="w-6 h-6 text-neutral-200 mt-1 mr-4 flex-shrink-0" />
                   <div>
@@ -129,7 +129,7 @@ const Contact = () => {
                 </div>
 
                 {/* Consultório - ocupando 2 colunas */}
-                <div className="col-span-2 flex items-start">
+                <div className="col-span-1 md:col-span-2 flex items-start">
                   <MapPin className="w-6 h-6 text-neutral-200 mt-1 mr-4 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Consultório</p>

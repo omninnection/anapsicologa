@@ -63,10 +63,10 @@ const MandalaArquetipica = () => {
               <h1 className="text-2xl font-serif text-amber-900">Mandala Arquetípica</h1>
             </div>
             
-            {/* Logo Ana */}
+            {/* Logo Ana - Hidden on mobile */}
             <Link
               to="/"
-              className="flex items-center hover:scale-105 transition-transform duration-300"
+              className="hidden md:flex items-center hover:scale-105 transition-transform duration-300"
               aria-label="Voltar ao início"
             >
               <Heart className="w-6 h-6 mr-2 fill-current text-amber-600" />
