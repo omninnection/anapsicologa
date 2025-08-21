@@ -66,6 +66,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed navigation header */
   }
   
   /* Hide scrollbar for desktop navigation */

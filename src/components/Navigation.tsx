@@ -112,17 +112,25 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
 
   const currentTheme = getPageTheme(currentSlide);
 
-  const handleNavigation = (_href: string, index: number) => {
+  const handleNavigation = (href: string, index: number) => {
     setIsMobileMenuOpen(false); // Always close mobile menu first
     
-    if (goToSlide) {
-      // Use slider system for both mobile and desktop
-      if (isMobile) {
-        // Small delay to allow menu close animation
+    if (isMobile) {
+      // Mobile: Use smooth scroll to section IDs
+      const sectionId = href.replace('#', '');
+      const targetElement = document.getElementById(sectionId);
+      
+      if (targetElement) {
         setTimeout(() => {
-          goToSlide(index);
-        }, 150);
-      } else {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 300); // Allow menu close animation to complete
+      }
+    } else {
+      // Desktop: Use slide system
+      if (goToSlide) {
         goToSlide(index);
       }
     }
