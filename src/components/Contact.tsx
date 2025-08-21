@@ -155,7 +155,7 @@ const Contact = () => {
                   }}
                   loading="lazy"
                   title="Localização do Consultório - R. Phoenix, 28, San Diego Park, Cotia"
-                  className="rounded-2xl"
+                  className="rounded-2xl md:pointer-events-auto pointer-events-none"
                 ></iframe>
               </div>
               
@@ -175,9 +175,6 @@ const Contact = () => {
                   <div>
                     <p className="font-semibold text-sage-800">R. Phoenix, 28 - San Diego Park</p>
                     <p className="text-sm text-sage-600">Cotia - SP, CEP: 06710-860</p>
-                    <p className="text-xs text-sage-500 mt-1 flex items-center">
-                      <span>👆 Clique para abrir no Google Maps</span>
-                    </p>
                   </div>
                 </div>
               </div>
