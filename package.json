@@ -41,5 +41,18 @@
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "vite": "^4.5.0"
-  }
+  },
+  "description": "A modern, accessible, and performance-optimized website for a Brazilian psychology practice, built with React, TypeScript, and Tailwind CSS.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omninnection/anapsicologa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omninnection/anapsicologa/issues"
+  },
+  "homepage": "https://github.com/omninnection/anapsicologa#readme"
 }
