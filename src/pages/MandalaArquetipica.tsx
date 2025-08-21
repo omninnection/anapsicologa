@@ -58,7 +58,7 @@ const MandalaArquetipica = () => {
                 className="flex items-center text-amber-600 hover:text-amber-700 transition-colors mr-4"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
-                Voltar
+                <span className="hidden md:inline">Voltar</span>
               </Link>
               <h1 className="text-2xl font-serif text-amber-900">Mandala Arquetípica</h1>
             </div>
