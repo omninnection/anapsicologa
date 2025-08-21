@@ -104,37 +104,15 @@ function App() {
 
   if (isMobile) {
     return (
-      <div className="h-screen overflow-hidden relative">
-        <Navigation currentSlide={Math.max(0, Math.min(currentSlide - 1, baseSections.length - 1))} goToSlide={goToSlide} />
+      <div className="min-h-screen overflow-y-auto">
+        <Navigation currentSlide={0} goToSlide={goToSlide} />
         
-        {/* Mobile Previous Button */}
-        <button
-          onClick={goToPreviousSlide}
-          disabled={isTransitioning}
-          className="fixed left-4 top-1/2 transform -translate-y-1/2 z-40 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 !outline-none !border-none disabled:opacity-50 shadow-lg"
-          aria-label="Página anterior"
-        >
-          <ChevronLeft className="w-5 h-5 text-sage-700" />
-        </button>
-
-        {/* Mobile Next Button */}
-        <button
-          onClick={goToNextSlide}
-          disabled={isTransitioning}
-          className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 !outline-none !border-none disabled:opacity-50 shadow-lg"
-          aria-label="Próxima página"
-        >
-          <ChevronRight className="w-5 h-5 text-sage-700" />
-        </button>
-
-        <div 
-          className={`flex h-screen ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : 'transition-none'}`}
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {extendedSections.map((section, index) => (
+        {/* Mobile: Vertical scroll layout - sections stacked naturally */}
+        <div className="flex flex-col">
+          {baseSections.map((section, index) => (
             <div
               key={`${section.id}-${index}`}
-              className="w-screen h-screen flex-shrink-0 overflow-y-auto scrollbar-hidden"
+              className="min-h-screen w-full"
             >
               {section.component}
             </div>
