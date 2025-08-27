@@ -49,7 +49,7 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
 
   const navItems = [
     { href: '#about', label: 'Início', index: 0 },
-    { href: '#emotional-map', label: 'Atividades', index: 1 },
+    { href: '#emotional-map', label: 'Atuação Clínica', index: 1 },
     { href: '#services', label: 'Serviços', index: 2 },
     { href: '#contact', label: 'Contato', index: 3 }
   ];
@@ -67,15 +67,15 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
           mobileBg: 'bg-lavender-50',
           mobileHoverBg: 'hover:bg-lavender-50'
         };
-      case 1: // Atividades - fundo amarelo 
+      case 1: // Atuação Clínica - fundo gradiente laranja/vermelho/amarelo 
         return {
           headerBg: 'bg-white',
-          logoColor: 'text-sage-600',
-          inactiveText: 'text-sage-500',
-          activeText: 'text-sage-800',
-          hoverText: 'hover:text-sage-800',
-          mobileBg: 'bg-sage-50',
-          mobileHoverBg: 'hover:bg-sage-50'
+          logoColor: 'text-orange-600',
+          inactiveText: 'text-orange-500',
+          activeText: 'text-orange-800',
+          hoverText: 'hover:text-orange-800',
+          mobileBg: 'bg-orange-50',
+          mobileHoverBg: 'hover:bg-orange-50'
         };
       case 2: // Serviços - fundo claro
         return {

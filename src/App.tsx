@@ -16,6 +16,23 @@ function App() {
     setCurrentSlide(index + 1); // +1 porque temos um clone no início
   };
 
+  // Define cores das setas baseado na página atual
+  const getArrowColor = () => {
+    const realSlide = Math.max(0, Math.min(currentSlide - 1, baseSections.length - 1));
+    switch (realSlide) {
+      case 0: // About/Home - roxo
+        return 'text-lavender-700';
+      case 1: // Atuação Clínica - laranja
+        return 'text-orange-600';
+      case 2: // Serviços - verde
+        return 'text-sage-700';
+      case 3: // Contato - verde
+        return 'text-sage-700';
+      default:
+        return 'text-sage-700';
+    }
+  };
+
   const getSections = () => [
     { id: 'about', component: <About goToSlide={goToSlide} /> },              // 0 - Início
     { id: 'emotional-map', component: <EmotionalMap goToSlide={goToSlide} /> }, // 1 - Atividades  
@@ -132,7 +149,7 @@ function App() {
         className="hidden md:flex fixed left-6 top-1/2 transform -translate-y-1/2 z-40 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 !outline-none !border-none"
         aria-label="Página anterior"
       >
-        <ChevronLeft className="w-6 h-6 text-sage-700" />
+        <ChevronLeft className={`w-6 h-6 ${getArrowColor()}`} />
       </button>
 
       {/* Next Button */}
@@ -141,7 +158,7 @@ function App() {
         className="hidden md:flex fixed right-6 top-1/2 transform -translate-y-1/2 z-40 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 !outline-none !border-none"
         aria-label="Próxima página"
       >
-        <ChevronRight className="w-6 h-6 text-sage-700" />
+        <ChevronRight className={`w-6 h-6 ${getArrowColor()}`} />
       </button>
 
       <div 

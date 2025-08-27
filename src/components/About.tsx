@@ -99,10 +99,10 @@ const About = ({ goToSlide }: AboutProps) => {
             
             <div className="space-y-6 text-lg text-white leading-relaxed">
               <p className="animate-paragraph-fade" style={{ animationDelay: '2.0s' }}>
-                Sou psicóloga clínica formada em 2014 pela PUC-SP, com abordagem junguiana 
-                (Psicologia Analítica). Atualmente estou em formação em Psicologia Junguiana 
-                pelo Instituto Dedalus e participo de núcleos de estudo na Sociedade 
-                Brasileira de Psicologia Analítica.
+                Sou psicóloga clínica formada em 2014 pela PUC-SP, com especialização 
+                em abordagem junguiana (Psicologia Analítica). Atualmente estou em formação 
+                em Psicologia Junguiana pelo Instituto Dedalus e participo de núcleos de estudo 
+                na Sociedade Brasileira de Psicologia Analítica.
               </p>
               
               <p className="animate-paragraph-fade" style={{ animationDelay: '3.0s' }}>
