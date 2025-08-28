@@ -56,7 +56,7 @@ const Services = () => {
             Como posso cuidar de você
           </h2>
           <p className={`text-xl text-sage-700 max-w-3xl mx-auto leading-relaxed mb-16 ${isVisible ? 'animate-paragraph-fade' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
-            Meu trabalho é te acompanhar com carinho nesta jornada de autoconhecimento, usando a abordagem junguiana que tanto amo e acredito
+            A terapia é uma possibilidade de travessia para consciência de si mesmo, de cultivo da alma, que acontece através de uma relação entre terapeuta e paciente. Te convido a experimentar esse caminho.
           </p>
         </div>
 

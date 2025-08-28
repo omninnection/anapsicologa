@@ -18,7 +18,7 @@ const About = ({ goToSlide }: AboutProps) => {
     },
     {
       title: "Formação",
-      description: "Psicologia Analítica - Instituto Dedalus"
+      description: "Abordagem Junguiana - PUC-SP"
     },
     {
       title: "10+ anos",
@@ -49,8 +49,7 @@ const About = ({ goToSlide }: AboutProps) => {
             </h1>
             
             <p className="text-xl md:text-2xl text-neutral-100 mb-8 leading-relaxed animate-text-flow" style={{ animationDelay: '1.2s' }}>
-              Psicoterapia individual e online com abordagem junguiana. 
-              Amplie sua consciência e descubra seu potencial de transformação.
+              Psicoterapia individual e online com abordagem junguiana.
             </p>
 
             {/* Mobile Image - Square format after subtitle */}
@@ -116,7 +115,7 @@ const About = ({ goToSlide }: AboutProps) => {
                 Busco uma escuta sensível ao processo singular de cada paciente em sua 
                 jornada de individuação, conduzindo-o à vivência de experiências mais 
                 complexas de desenvolvimento e transformação. Atendo presencialmente 
-                em São Paulo e online.
+                em Cotia e online.
               </p>
             </div>
 

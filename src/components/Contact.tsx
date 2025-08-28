@@ -128,57 +128,16 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Consultório - ocupando 2 colunas */}
-                <div className="col-span-1 md:col-span-2 flex items-start">
+                <div className="flex items-start">
                   <MapPin className="w-6 h-6 text-neutral-200 mt-1 mr-4 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Consultório</p>
-                    <p className="text-neutral-100">
-                      R. Phoenix, 28 - San Diego Park<br />
-                      Cotia - SP - CEP: 06710-860
-                    </p>
+                    <p className="text-neutral-100">Cotia - SP</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Mapa */}
-            <div className="bg-white rounded-2xl flex-1 min-h-80 overflow-hidden relative shadow-lg">
-              <div className="w-full h-full">
-                <iframe
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-46.833669,-23.597378,-46.827669,-23.593378&layer=mapnik&marker=-23.595378,-46.830669"
-                  width="100%"
-                  height="100%"
-                  style={{ 
-                    border: 0,
-                    filter: 'brightness(98%) contrast(95%)'
-                  }}
-                  loading="lazy"
-                  title="Localização do Consultório - R. Phoenix, 28, San Diego Park, Cotia"
-                  className="rounded-2xl md:pointer-events-auto pointer-events-none"
-                ></iframe>
-              </div>
-              
-              {/* Clickable overlay to open Google Maps */}
-              <button
-                onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=R.+Phoenix,+28+-+San+Diego+Park,+Cotia+-+SP,+06710-860', '_blank')}
-                onTouchStart={() => {}}
-                className="absolute inset-0 w-full h-full bg-transparent cursor-pointer z-20 hover:bg-sage-900/5 active:bg-sage-900/10 transition-all duration-300 rounded-2xl touch-manipulation"
-                title="Clique para abrir no Google Maps"
-                aria-label="Abrir localização no Google Maps"
-              />
-              
-              {/* Card de informação */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl z-30 pointer-events-none">
-                <div className="flex items-center text-sage-700">
-                  <MapPin className="w-5 h-5 mr-3 text-sage-600 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-sage-800">R. Phoenix, 28 - San Diego Park</p>
-                    <p className="text-sm text-sage-600">Cotia - SP, CEP: 06710-860</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Contact Form */}
