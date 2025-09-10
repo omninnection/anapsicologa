@@ -22,11 +22,18 @@ function App() {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
+        // Set target slide immediately for header color
+        setMobileActiveSlide(index);
+        
         targetElement.scrollIntoView({ 
           behavior: 'smooth', 
           block: 'start' 
         });
-        setMobileActiveSlide(index);
+        
+        // Ensure the slide remains set after scroll completes
+        setTimeout(() => {
+          setMobileActiveSlide(index);
+        }, 1000); // After smooth scroll completes
       }
     } else {
       // Desktop: slide navigation
