@@ -7,7 +7,11 @@ interface AboutProps {
 const About = ({ goToSlide }: AboutProps) => {
   const navigateToContact = () => {
     if (goToSlide) {
+      // SPA context - use slide navigation
       goToSlide(3); // Contact section is at index 3
+    } else {
+      // Static page context - navigate to contact page
+      window.location.href = '/contato-agendar';
     }
   };
 
