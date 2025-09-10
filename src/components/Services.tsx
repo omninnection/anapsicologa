@@ -12,7 +12,7 @@ const Services = ({ goToSlide }: ServicesProps) => {
 
   const navigateToContact = () => {
     if (goToSlide) {
-      goToSlide(3); // Contact section is at index 3
+      goToSlide(2); // Contact section is at index 2 (0-indexed: About=0, EmotionalMap=1, Services=2, Contact=3, but goToSlide adds +1)
     }
   };
 

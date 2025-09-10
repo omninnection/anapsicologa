@@ -11,6 +11,7 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(1); // Começar no slide 1 (real index 0)
   const [isMobile, setIsMobile] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [mobileActiveSlide, setMobileActiveSlide] = useState(0); // Para mobile scroll detection
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index + 1); // +1 porque temos um clone no início
@@ -62,6 +63,40 @@ function App() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Mobile scroll detection with Intersection Observer
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            const sectionId = entry.target.id;
+            const sectionIndex = baseSections.findIndex(section => section.id === sectionId);
+            if (sectionIndex !== -1) {
+              setMobileActiveSlide(sectionIndex);
+            }
+          }
+        });
+      },
+      {
+        threshold: [0.5], // Section must be 50% visible
+        rootMargin: '-10% 0px -10% 0px' // Adjust for header space
+      }
+    );
+
+    // Observe all sections
+    const sections = ['about', 'emotional-map', 'services', 'contact'];
+    sections.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [isMobile, baseSections]);
 
   useEffect(() => {
     if (isMobile) return;
@@ -122,7 +157,7 @@ function App() {
   if (isMobile) {
     return (
       <div className="min-h-screen overflow-y-auto">
-        <Navigation currentSlide={0} goToSlide={goToSlide} />
+        <Navigation currentSlide={mobileActiveSlide} goToSlide={goToSlide} />
         
         {/* Mobile: Vertical scroll layout - sections stacked naturally */}
         <div className="flex flex-col">

@@ -104,6 +104,9 @@ const About = ({ goToSlide }: AboutProps) => {
                 na Sociedade Brasileira de Psicologia Analítica.
               </p>
               
+              <p className="animate-paragraph-fade" style={{ animationDelay: '2.5s' }}>
+                A abordagem junguiana tem como eixo central o processo de individuação, que consiste na ampliação da consciência. Por meio dos movimentos da nossa energia psíquica, nos relacionamos com o nosso Self e ampliamos nosso campo de consciência.
+              </p>
               
               <p className="animate-paragraph-fade" style={{ animationDelay: '3.0s' }}>
                 Busco uma escuta sensível ao processo singular de cada paciente em sua 
