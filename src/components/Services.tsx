@@ -13,7 +13,7 @@ const Services = ({ goToSlide }: ServicesProps) => {
   const navigateToContact = () => {
     if (goToSlide) {
       // SPA context - use slide navigation
-      goToSlide(2); // Contact section is at index 2 (0-indexed: About=0, EmotionalMap=1, Services=2, Contact=3, but goToSlide adds +1)
+      goToSlide(3); // Contact section is at index 3 (0-indexed: About=0, EmotionalMap=1, Services=2, Contact=3)
     } else {
       // Static page context - navigate to contact page
       window.location.href = '/contato-agendar';
@@ -107,7 +107,7 @@ const Services = ({ goToSlide }: ServicesProps) => {
           <button
             onClick={navigateToContact}
             type="button"
-            className={`inline-flex items-center px-8 py-4 bg-sage-600 text-white font-semibold rounded-full hover:bg-sage-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sage-500 ${
+            className={`inline-flex items-center px-8 py-4 bg-sage-600 text-white font-semibold rounded-full hover:bg-sage-700 active:bg-sage-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sage-500 touch-manipulation cursor-pointer ${
               isVisible ? 'animate-buttons-entrance' : 'opacity-0'
             }`}
             style={{ animationDelay: '2.0s' }}
