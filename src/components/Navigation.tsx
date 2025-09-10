@@ -112,27 +112,19 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
 
   const currentTheme = getPageTheme(currentSlide);
 
-  const handleNavigation = (href: string, index: number) => {
+  const handleNavigation = (_href: string, index: number) => {
     setIsMobileMenuOpen(false); // Always close mobile menu first
     
-    if (isMobile) {
-      // Mobile: Use smooth scroll to section IDs
-      const sectionId = href.replace('#', '');
-      const targetElement = document.getElementById(sectionId);
-      
-      if (targetElement) {
-        setTimeout(() => {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }, 300); // Allow menu close animation to complete
-      }
-    } else {
-      // Desktop: Use slide system
-      if (goToSlide) {
+    if (goToSlide) {
+      // SPA context (both mobile and desktop) - use slide system
+      // Reduced delay for faster mobile navigation
+      setTimeout(() => {
         goToSlide(index);
-      }
+      }, isMobile ? 150 : 250); // Faster on mobile
+    } else {
+      // Static page context - navigate to appropriate page
+      const routes = ['/', '/servicos-terapia', '/atuacao-clinica-junguiana', '/contato-agendar'];
+      window.location.href = routes[index] || '/';
     }
   };
 
@@ -141,7 +133,6 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
       e.preventDefault();
       e.stopPropagation();
     }
-    console.log('Toggling mobile menu from:', isMobileMenuOpen, 'to:', !isMobileMenuOpen);
     setIsMobileMenuOpen(prev => !prev);
   };
 
@@ -161,13 +152,13 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
   return (
     <>
       {/* Navigation Header */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${currentTheme.headerBg}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 mobile-nav-fast ${currentTheme.headerBg}`}>
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <button
               onClick={() => handleNavigation('#about', 0)}
-              className="flex items-center cursor-pointer group !outline-none !border-none hover:scale-105 transition-transform duration-300 touch-manipulation"
+              className="flex items-center cursor-pointer group !outline-none !border-none hover:scale-105 mobile-hover-fast touch-manipulation"
               aria-label="Voltar ao início"
             >
               <Heart className={`w-6 h-6 mr-3 fill-current ${currentTheme.logoColor}`} />
@@ -182,7 +173,7 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
                 <button
                   key={item.href}
                   onClick={() => handleNavigation(item.href, item.index)}
-                  className={`font-medium transition-all duration-300 !outline-none !border-none hover:scale-105 ${
+                  className={`font-medium mobile-nav-fast !outline-none !border-none hover:scale-105 ${
                     !isMobile && currentSlide === item.index
                       ? `${currentTheme.activeText} font-bold`
                       : `${currentTheme.inactiveText} ${currentTheme.hoverText}`
@@ -198,7 +189,7 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
               <button
                 onClick={toggleMobileMenu}
                 onTouchEnd={toggleMobileMenu}
-                className={`p-2 rounded-lg transition-colors duration-300 !outline-none !border-none ${currentTheme.inactiveText} ${currentTheme.hoverText} hover:bg-white/20 active:bg-white/30 touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center`}
+                className={`p-2 rounded-lg mobile-nav-fast !outline-none !border-none ${currentTheme.inactiveText} ${currentTheme.hoverText} hover:bg-white/20 active:bg-white/30 touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center`}
                 aria-label="Menu"
                 data-hamburger-button
                 type="button"
@@ -234,7 +225,7 @@ const Navigation = ({ currentSlide = 0, goToSlide }: NavigationProps) => {
                   key={item.href}
                   onClick={() => handleNavigation(item.href, item.index)}
                   onTouchStart={() => {}} // Enable touch events
-                  className={`block w-full text-left px-3 py-3 text-base transition-all duration-300 !outline-none !border-none hover:scale-105 active:scale-95 rounded-lg touch-manipulation min-h-[44px] ${
+                  className={`block w-full text-left px-3 py-3 text-base mobile-nav-fast !outline-none !border-none hover:scale-105 active:scale-95 rounded-lg touch-manipulation min-h-[44px] ${
                     currentSlide === item.index
                       ? `font-bold ${currentTheme.activeText} ${currentTheme.mobileBg}`
                       : `font-medium ${currentTheme.inactiveText} ${currentTheme.hoverText} ${currentTheme.mobileHoverBg}`

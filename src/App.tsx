@@ -103,16 +103,17 @@ function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Mobile scroll detection with Intersection Observer
+  // Mobile scroll detection with Intersection Observer - Optimized for faster response
   useEffect(() => {
     if (!isMobile) return;
 
-    // Add a small delay to ensure sections are rendered
+    // Reduced delay for faster initialization
     const initializeObserver = () => {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            // More responsive threshold - triggers earlier
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
               const sectionId = entry.target.id;
               // Map section IDs to indices directly
               const sectionIndexMap: { [key: string]: number } = {
@@ -130,8 +131,8 @@ function App() {
           });
         },
         {
-          threshold: [0.5], // Section must be 50% visible
-          rootMargin: '-20% 0px -20% 0px' // More aggressive detection
+          threshold: [0.3, 0.5, 0.7], // Multiple thresholds for smoother detection
+          rootMargin: '-10% 0px -10% 0px' // Less aggressive margin for earlier detection
         }
       );
 
@@ -147,7 +148,7 @@ function App() {
       return observer;
     };
 
-    // Initialize observer after a brief delay
+    // Faster initialization - reduced from 100ms to 50ms
     const timeoutId = setTimeout(() => {
       const observer = initializeObserver();
       
@@ -156,7 +157,7 @@ function App() {
           observer.disconnect();
         }
       };
-    }, 100);
+    }, 50);
 
     return () => {
       clearTimeout(timeoutId);
