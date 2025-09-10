@@ -15,7 +15,23 @@ function App() {
   const [mobileActiveSlide, setMobileActiveSlide] = useState(0); // Para mobile scroll detection
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index + 1); // +1 porque temos um clone no início
+    if (isMobile) {
+      // Mobile: scroll to specific section
+      const sectionIds = ['about', 'emotional-map', 'services', 'contact'];
+      const targetId = sectionIds[index];
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+        setMobileActiveSlide(index);
+      }
+    } else {
+      // Desktop: slide navigation
+      setCurrentSlide(index + 1); // +1 porque temos um clone no início
+    }
   };
 
   // Dynamic SEO based on current slide
