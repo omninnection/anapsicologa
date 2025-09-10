@@ -61,21 +61,11 @@ const EmotionalMap = ({ goToSlide }: EmotionalMapProps) => {
               </p>
               
               <p className="text-lg md:text-xl text-white leading-relaxed text-justify">
-                A abordagem junguiana tem como eixo central o que Jung chamou de processo de individuação, que consiste na ampliação da consciência. Por meio dos movimentos da nossa energia psíquica, nos relacionamos com o nosso Self e ampliamos nosso campo de consciência.
+                A abordagem junguiana entende a escuta do paciente e de seu inconsciente como eixo central no processo de psicoterapia. Por meio dos movimentos da nossa energia psíquica, nos relacionamos com o nosso inconsciente e ampliamos o campo de nossa consciência.
               </p>
-            </div>
-          </div>
-
-          {/* Segundo bloco - mesmo padrão do primeiro */}
-          <div className={`text-center mb-12 ${isVisible ? 'animate-text-flow' : 'opacity-0'}`} style={{ animationDelay: '1.4s' }}>
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-medium text-white mb-6 text-left">
-                E o que isso significa na prática?
-              </h3>
-            </div>
-            <div className="space-y-6 max-w-4xl mx-auto">
+              
               <p className="text-lg md:text-xl text-white leading-relaxed text-justify">
-                Significa nos aproximar, conhecer e também confrontar a nós mesmos, o que favorece o desenvolvimento de recursos mais complexos, ou mais criativos, para enfrentar ou suportar situações e eventos inevitáveis da vida.
+                Este é um processo absolutamente natural, e a psicoterapia, através da relação entre terapeuta e paciente, pode funcionar como um "espelho". O que pode dar significados, confrontações e aproximações a estes nossos conteúdos. Isto favorece o desenvolvimento de recursos mais complexos, ou mais criativos, para enfrentar ou suportar situações e eventos inevitáveis da vida.
               </p>
               
               <p className="text-lg md:text-xl text-white leading-relaxed text-justify">
@@ -83,6 +73,7 @@ const EmotionalMap = ({ goToSlide }: EmotionalMapProps) => {
               </p>
             </div>
           </div>
+
         </div>
 
 

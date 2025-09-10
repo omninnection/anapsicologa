@@ -36,7 +36,7 @@ function App() {
   const getSections = () => [
     { id: 'about', component: <About goToSlide={goToSlide} /> },              // 0 - Início
     { id: 'emotional-map', component: <EmotionalMap goToSlide={goToSlide} /> }, // 1 - Atividades  
-    { id: 'services', component: <Services /> },         // 2 - Serviços
+    { id: 'services', component: <Services goToSlide={goToSlide} /> },         // 2 - Serviços
     { id: 'contact', component: <><Contact /><Footer /></> }, // 3 - Contato
   ];
 

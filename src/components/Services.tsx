@@ -2,9 +2,19 @@
 import { Heart } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
-const Services = () => {
+interface ServicesProps {
+  goToSlide?: (index: number) => void;
+}
+
+const Services = ({ goToSlide }: ServicesProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const navigateToContact = () => {
+    if (goToSlide) {
+      goToSlide(3); // Contact section is at index 3
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,19 +35,19 @@ const Services = () => {
   const services = [
     {
       title: "Que tal conversarmos?",
-      description: "Vou te acompanhar no seu processo de autoconhecimento, usando Jung para nos aprofundarmos nos seus sonhos, medos e descobertas. Cada sessão é um encontro único entre nós duas",
+      description: "Vou te acompanhar no seu processo de autoconhecimento, usando a abordagem junguiana para nos aprofundarmos nos seus sonhos, medos e descobertas. Cada sessão é um encontro único entre nós.",
       duration: "60 minutos",
       format: "Presencial ou Online"
     },
     {
       title: "Precisa de um apoio?",
-      description: "Estou aqui para te acolher nos momentos difíceis - lutos, separações, mudanças ou crises. Vamos juntas encontrar luz e força nesse momento delicado da sua vida",
+      description: "Estou aqui para te acolher nos momentos difíceis - lutos, separações, mudanças ou crises.",
       duration: "60 minutos",
       format: "Presencial"
     },
     {
       title: "Te atendo online também",
-      description: "Se você prefere o conforto da sua casa, podemos nos encontrar por videochamada. Mantenho o mesmo carinho e cuidado, só muda o espaço onde nos conectamos",
+      description: "Se você prefere o conforto da sua casa, podemos nos encontrar por videochamada. Mantenho o mesmo cuidado, só muda o espaço onde nos conectamos.",
       duration: "60 minutos",
       format: "Videochamada"
     }
@@ -90,15 +100,16 @@ const Services = () => {
         </div>
 
         <div className="text-center mt-16">
-          <a
-            href="#contact"
+          <button
+            onClick={navigateToContact}
+            type="button"
             className={`inline-flex items-center px-8 py-4 bg-sage-600 text-white font-semibold rounded-full hover:bg-sage-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-sage-500 ${
               isVisible ? 'animate-buttons-entrance' : 'opacity-0'
             }`}
             style={{ animationDelay: '2.0s' }}
           >
             Vamos nos conhecer?
-          </a>
+          </button>
         </div>
       </div>
     </section>
