@@ -1,4 +1,32 @@
+# robots.txt for Ana - Psicóloga Clínica Junguiana
 User-agent: *
 Allow: /
 
+# Main pages - high priority for crawling
+Allow: /
+Allow: /servicos
+Allow: /atuacao-clinica
+Allow: /contato
+
+# Interactive tools - allow but lower priority
+Allow: /mandala-arquetipica
+Allow: /jornada-heroi
+Allow: /explorador-arquetipos
+Allow: /diario-sonhos
+
+# Legacy SPA route
+Allow: /spa
+
+# Block common unwanted paths
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+Disallow: /*.json
+Disallow: /node_modules
+Disallow: /src
+
+# Sitemap location
 Sitemap: https://psicologaexemplo.com.br/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1

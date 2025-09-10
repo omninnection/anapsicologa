@@ -1,9 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://psicologaexemplo.com.br/</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<!-- Main SPA - User Experience -->
+<url>
+  <loc>https://psicologaexemplo.com.br/</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>1.00</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<!-- SEO optimized pages - Google indexing -->
+<url>
+  <loc>https://psicologaexemplo.com.br/sobre-ana</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.95</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>https://psicologaexemplo.com.br/servicos-terapia</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.90</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>https://psicologaexemplo.com.br/atuacao-clinica-junguiana</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<url>
+  <loc>https://psicologaexemplo.com.br/contato-agendar</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+<!-- Interactive tools -->
+<url>
+  <loc>https://psicologaexemplo.com.br/mandala-arquetipica</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>https://psicologaexemplo.com.br/jornada-heroi</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>https://psicologaexemplo.com.br/explorador-arquetipos</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
+<url>
+  <loc>https://psicologaexemplo.com.br/diario-sonhos</loc>
+  <lastmod>2024-12-10T09:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+  <changefreq>yearly</changefreq>
+</url>
+
 </urlset>

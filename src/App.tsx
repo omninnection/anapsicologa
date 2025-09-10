@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import Navigation from './components/Navigation';
 import About from './components/About';
 import Services from './components/Services';
@@ -15,6 +16,44 @@ function App() {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index + 1); // +1 porque temos um clone no início
+  };
+
+  // Dynamic SEO based on current slide
+  const getSEOForSlide = (slideIndex: number) => {
+    const realSlide = Math.max(0, Math.min(slideIndex - 1, baseSections.length - 1));
+    
+    switch (realSlide) {
+      case 0: // About
+        return {
+          title: "Ana - Psicóloga Clínica Junguiana em São Paulo | Terapia Individual",
+          description: "Psicóloga clínica especializada em abordagem junguiana. Processo de individuação, ampliação da consciência em São Paulo e Cotia. Formação PUC-SP e Instituto Dedalus.",
+          canonical: "https://psicologaexemplo.com.br/sobre-ana"
+        };
+      case 1: // Emotional Map / Atuação Clínica
+        return {
+          title: "Atuação Clínica Junguiana | Processo de Individuação e Autoconhecimento",
+          description: "Abordagem junguiana focada no processo de individuação. Trabalho com sonhos, complexos e amplificação da consciência. Psicóloga especializada em Psicologia Analítica.",
+          canonical: "https://psicologaexemplo.com.br/atuacao-clinica-junguiana"
+        };
+      case 2: // Services
+        return {
+          title: "Serviços de Terapia Junguiana | Atendimento Presencial e Online",
+          description: "Terapia individual com abordagem junguiana. Atendimento presencial em Cotia e sessões online. Processo de individuação e ampliação da consciência.",
+          canonical: "https://psicologaexemplo.com.br/servicos-terapia"
+        };
+      case 3: // Contact
+        return {
+          title: "Contato - Agendar Consulta com Psicóloga Junguiana | São Paulo",
+          description: "Agende sua consulta com psicóloga especializada em abordagem junguiana. Atendimento em Cotia-SP e online. Processo de individuação e desenvolvimento pessoal.",
+          canonical: "https://psicologaexemplo.com.br/contato-agendar"
+        };
+      default:
+        return {
+          title: "Ana - Psicóloga Clínica Junguiana em São Paulo | Terapia Individual",
+          description: "Psicóloga clínica especializada em abordagem junguiana. Processo de individuação, ampliação da consciência em São Paulo e Cotia.",
+          canonical: "https://psicologaexemplo.com.br/"
+        };
+    }
   };
 
   // Define cores das setas baseado na página atual
@@ -180,10 +219,19 @@ function App() {
     }
   };
 
+  const currentSEO = getSEOForSlide(isMobile ? mobileActiveSlide + 1 : currentSlide);
+
   if (isMobile) {
     return (
-      <div className="min-h-screen overflow-y-auto">
-        <Navigation currentSlide={mobileActiveSlide} goToSlide={goToSlide} />
+      <>
+        <Helmet>
+          <title>{currentSEO.title}</title>
+          <meta name="description" content={currentSEO.description} />
+          <link rel="canonical" href={currentSEO.canonical} />
+        </Helmet>
+        
+        <div className="min-h-screen overflow-y-auto">
+          <Navigation currentSlide={mobileActiveSlide} goToSlide={goToSlide} />
         
         {/* Mobile: Vertical scroll layout - sections stacked naturally */}
         <div className="flex flex-col">
@@ -196,13 +244,21 @@ function App() {
             </div>
           ))}
         </div>
-      </div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="h-screen overflow-hidden relative">
-      <Navigation currentSlide={Math.max(0, Math.min(currentSlide - 1, baseSections.length - 1))} goToSlide={goToSlide} />
+    <>
+      <Helmet>
+        <title>{currentSEO.title}</title>
+        <meta name="description" content={currentSEO.description} />
+        <link rel="canonical" href={currentSEO.canonical} />
+      </Helmet>
+      
+      <div className="h-screen overflow-hidden relative">
+        <Navigation currentSlide={Math.max(0, Math.min(currentSlide - 1, baseSections.length - 1))} goToSlide={goToSlide} />
       
       {/* Previous Button */}
       <button
@@ -235,7 +291,8 @@ function App() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

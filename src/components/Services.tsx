@@ -12,7 +12,11 @@ const Services = ({ goToSlide }: ServicesProps) => {
 
   const navigateToContact = () => {
     if (goToSlide) {
+      // SPA context - use slide navigation
       goToSlide(2); // Contact section is at index 2 (0-indexed: About=0, EmotionalMap=1, Services=2, Contact=3, but goToSlide adds +1)
+    } else {
+      // Static page context - navigate to contact page
+      window.location.href = '/contato-agendar';
     }
   };
 
@@ -74,7 +78,7 @@ const Services = ({ goToSlide }: ServicesProps) => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-6 transition-all duration-300 group border border-sage-200 hover:-translate-y-1 hover:border-sage-300 ${
+              className={`bg-white rounded-2xl p-6 transition-all duration-300 group border border-sage-200 hover:-translate-y-1 hover:border-sage-300 flex flex-col ${
                 isVisible ? 'animate-card-entrance' : 'opacity-0'
               }`}
               style={{ animationDelay: `${1.2 + index * 0.2}s` }}
@@ -83,11 +87,11 @@ const Services = ({ goToSlide }: ServicesProps) => {
                 {service.title}
               </h3>
               
-              <p className="text-sage-700 mb-6 leading-relaxed text-sm">
+              <p className="text-sage-700 mb-6 leading-relaxed text-sm flex-grow">
                 {service.description}
               </p>
               
-              <div className="space-y-2 text-xs text-sage-500">
+              <div className="space-y-2 text-xs text-sage-500 mt-auto">
                 <div>
                   <span className="font-medium">Duração:</span> {service.duration}
                 </div>
