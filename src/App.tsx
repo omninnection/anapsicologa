@@ -68,35 +68,61 @@ function App() {
   useEffect(() => {
     if (!isMobile) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            const sectionId = entry.target.id;
-            const sectionIndex = baseSections.findIndex(section => section.id === sectionId);
-            if (sectionIndex !== -1) {
-              setMobileActiveSlide(sectionIndex);
+    // Add a small delay to ensure sections are rendered
+    const initializeObserver = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+              const sectionId = entry.target.id;
+              // Map section IDs to indices directly
+              const sectionIndexMap: { [key: string]: number } = {
+                'about': 0,
+                'emotional-map': 1,
+                'services': 2,
+                'contact': 3
+              };
+              
+              const sectionIndex = sectionIndexMap[sectionId];
+              if (sectionIndex !== undefined) {
+                setMobileActiveSlide(sectionIndex);
+              }
             }
-          }
-        });
-      },
-      {
-        threshold: [0.5], // Section must be 50% visible
-        rootMargin: '-10% 0px -10% 0px' // Adjust for header space
-      }
-    );
+          });
+        },
+        {
+          threshold: [0.5], // Section must be 50% visible
+          rootMargin: '-20% 0px -20% 0px' // More aggressive detection
+        }
+      );
 
-    // Observe all sections
-    const sections = ['about', 'emotional-map', 'services', 'contact'];
-    sections.forEach(id => {
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
+      // Observe all sections
+      const sections = ['about', 'emotional-map', 'services', 'contact'];
+      sections.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          observer.observe(element);
+        }
+      });
 
-    return () => observer.disconnect();
-  }, [isMobile, baseSections]);
+      return observer;
+    };
+
+    // Initialize observer after a brief delay
+    const timeoutId = setTimeout(() => {
+      const observer = initializeObserver();
+      
+      return () => {
+        if (observer) {
+          observer.disconnect();
+        }
+      };
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile) return;
